@@ -4,6 +4,7 @@ set -e
 DEFAULT_BIN_DIR="/usr/local/bin"
 BIN_DIR=${1:-"${DEFAULT_BIN_DIR}"}
 GITHUB_REPO="fluxcd/flux2"
+FLUX_VERSION="2.3.0"  # Added to specify version 2.3.0
 
 # Helper functions for logs
 info() {
@@ -89,16 +90,16 @@ setup_tmp() {
 get_release_version() {
     if [[ -n "${FLUX_VERSION}" ]]; then
       SUFFIX_URL="tags/v${FLUX_VERSION}"
+      VERSION_FLUX="${FLUX_VERSION}"
+      info "Using specified version ${VERSION_FLUX}"
     else
       SUFFIX_URL="latest"
+      METADATA_URL="https://api.github.com/repos/${GITHUB_REPO}/releases/${SUFFIX_URL}"
+      info "Downloading metadata ${METADATA_URL}"
+      download "${TMP_METADATA}" "${METADATA_URL}"
+      VERSION_FLUX=$(grep '"tag_name":' "${TMP_METADATA}" | sed -E 's/.*"([^"]+)".*/\1/' | cut -c 2-)
     fi
-
-    METADATA_URL="https://api.github.com/repos/${GITHUB_REPO}/releases/${SUFFIX_URL}"
-
-    info "Downloading metadata ${METADATA_URL}"
-    download "${TMP_METADATA}" "${METADATA_URL}"
-
-    VERSION_FLUX=$(grep '"tag_name":' "${TMP_METADATA}" | sed -E 's/.*"([^"]+)".*/\1/' | cut -c 2-)
+    
     if [[ -n "${VERSION_FLUX}" ]]; then
         info "Using ${VERSION_FLUX} as release"
     else
@@ -112,10 +113,10 @@ download() {
 
     case $DOWNLOADER in
         curl)
-            curl -u user:$GITHUB_TOKEN -o "$1" -sfL "$2"
+            curl -o "$1" -sfL "$2"
             ;;
         wget)
-            wget --auth-no-challenge --user=user --password=$GITHUB_TOKEN -qO "$1" "$2"
+            wget -qO "$1" "$2"
             ;;
         *)
             fatal "Incorrect executable '${DOWNLOADER}'"
