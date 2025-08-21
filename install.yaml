@@ -25451,7 +25451,7 @@ spec:
             secretKeyRef:
               key: auth
               name: argocd-redis
-        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/library/redis:7.2.7-alpine
+        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/library/redis:7.2.3
         imagePullPolicy: Always
         name: redis
         ports:
@@ -26773,4 +26773,5 @@ spec:
     matchLabels:
       app.kubernetes.io/name: argocd-server
   policyTypes:
+
   - Ingress
