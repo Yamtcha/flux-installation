@@ -24916,7 +24916,6 @@ metadata:
     app.kubernetes.io/part-of: argocd
   name: argocd-server
 spec:
-  type: LoadBalancer
   ports:
   - name: http
     port: 80
@@ -26776,5 +26775,6 @@ spec:
   policyTypes:
 
   - Ingress
+
 
 
