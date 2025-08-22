@@ -24915,7 +24915,10 @@ metadata:
     app.kubernetes.io/name: argocd-server
     app.kubernetes.io/part-of: argocd
   name: argocd-server
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-internal: "true"
 spec:
+  type: LoadBalancer
   ports:
   - name: http
     port: 80
@@ -26775,6 +26778,7 @@ spec:
   policyTypes:
 
   - Ingress
+
 
 
 
