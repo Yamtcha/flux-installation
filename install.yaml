@@ -25129,7 +25129,7 @@ spec:
               key: applicationsetcontroller.requeue.after
               name: argocd-cmd-params-cm
               optional: true
-        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
+        image: 829201352490.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
         imagePullPolicy: Always
         name: argocd-applicationset-controller
         ports:
@@ -25243,7 +25243,7 @@ spec:
               key: dexserver.disable.tls
               name: argocd-cmd-params-cm
               optional: true
-        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/dexidp/dex:v2.43.0
+        image: 829201352490.dkr.ecr.eu-west-1.amazonaws.com/dexidp/dex:v2.43.0
         imagePullPolicy: Always
         name: dex
         ports:
@@ -25272,7 +25272,7 @@ spec:
         - -n
         - /usr/local/bin/argocd
         - /shared/argocd-dex
-        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
+        image: 829201352490.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
         imagePullPolicy: Always
         name: copyutil
         securityContext:
@@ -25368,7 +25368,7 @@ spec:
               key: notificationscontroller.repo.server.plaintext
               name: argocd-cmd-params-cm
               optional: true
-        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
+        image: 829201352490.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
         imagePullPolicy: Always
         livenessProbe:
           tcpSocket:
@@ -25454,7 +25454,7 @@ spec:
             secretKeyRef:
               key: auth
               name: argocd-redis
-        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/library/redis:7.2.3
+        image: 829201352490.dkr.ecr.eu-west-1.amazonaws.com/library/redis:7.2.3
         imagePullPolicy: Always
         name: redis
         ports:
@@ -25470,7 +25470,7 @@ spec:
         - argocd
         - admin
         - redis-initial-password
-        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
+        image: 829201352490.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
         imagePullPolicy: IfNotPresent
         name: secret-init
         securityContext:
@@ -25743,7 +25743,7 @@ spec:
           value: /helm-working-dir
         - name: HELM_DATA_HOME
           value: /helm-working-dir
-        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
+        image: 829201352490.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
@@ -25795,7 +25795,7 @@ spec:
         - -n
         - /usr/local/bin/argocd
         - /var/run/argocd/argocd-cmp-server
-        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
+        image: 829201352490.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
         name: copyutil
         securityContext:
           allowPrivilegeEscalation: false
@@ -26167,7 +26167,7 @@ spec:
               key: server.sync.replace.allowed
               name: argocd-cmd-params-cm
               optional: true
-        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
+        image: 829201352490.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
@@ -26545,7 +26545,7 @@ spec:
               optional: true
         - name: KUBECACHEDIR
           value: /tmp/kubecache
-        image: 485231581386.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
+        image: 829201352490.dkr.ecr.eu-west-1.amazonaws.com/argoproj/argocd:v3.1.0
         imagePullPolicy: Always
         name: argocd-application-controller
         ports:
@@ -26778,6 +26778,7 @@ spec:
   policyTypes:
 
   - Ingress
+
 
 
 
