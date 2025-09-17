@@ -24935,11 +24935,11 @@ metadata:
   name: argocd-server-ingress
   namespace: argocd
   annotations:
-    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internal
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
 spec:
+  ingressClassName: alb
   rules:
     - host: argocd.internal.ghana.com
       http:
@@ -26799,6 +26799,7 @@ spec:
   policyTypes:
 
   - Ingress
+
 
 
 
